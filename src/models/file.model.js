@@ -2,14 +2,11 @@ const mongoose = require ('mongoose');
 
 
 const FileSchema = new mongoose.Schema({
-    "compliment": String,
+    'compliment': String,
     deleted: {type: Boolean, default: false}
 });
 
 const File = mongoose.model('File', FileSchema);
-
-
-module.exports = File;
 
 
 
@@ -25,6 +22,8 @@ File.count({}, function(err, count) {
       if (err) {
         throw err;
       }
-      console.log("DB seeded")
+      console.log("DB seeded");
   });
 });
+
+module.exports = File;

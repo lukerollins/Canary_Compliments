@@ -5,35 +5,50 @@ const mongoose = require('mongoose');
 
 
 router.get('/compliment', function(req, res, next) {
-  mongoose.model('File').find({deleted: {$ne: true}}, function(err, files) {
+  const fileModel = mongoose.model('File');
+
+  fileModel.find({deleted: {$ne: true}}, function(err, files) {
     if (err) {
       console.log(err);
       return res.status(500).json(err);
     }
-
+  
     res.json(files);
   });
 });
 
+router.get('/compliment/:fileId', function(req, res, next) {
+  const {fileId} = req.params;
+  // same as 'const fileId = req.params.fileId'
+
+  const file = FILES.find(entry => entry.id === fileId);
+  if (!file) {
+    return res.status(404).end(`Could not find file '${fileId}'`);
+  }
+
+  res.json(file);
+});
+
 
 router.post('/compliment', function(req, res, next) {
-
   const File = mongoose.model('File');
   const fileData = {
-    compliment: req.body.compliment
+    compliment: req.body.compliment,
   };
-
 
   File.create(fileData, function(err, newFile) {
     if (err) {
       console.log(err);
       return res.status(500).json(err);
     }
-console.log(newFile);
+
     res.json(newFile);
   });
 });
 
+/**
+ * Update an existing file
+ */
 router.put('/compliment/:fileId', function(req, res, next) {
   const File = mongoose.model('File');
   const fileId = req.params.fileId;
@@ -58,9 +73,13 @@ router.put('/compliment/:fileId', function(req, res, next) {
     })
 
   })
+
 });
 
-router.delete('/compliment/:fileId', function(req, res, next) {
+/**
+ * Delete a file
+ */
+router.delete('/compliment/:fileId', function(req, res, next){
   const File = mongoose.model('File');
   const fileId = req.params.fileId;
 
@@ -70,28 +89,16 @@ router.delete('/compliment/:fileId', function(req, res, next) {
       return res.status(500).json(err);
     }
     if (!file) {
-      return res.status(404).json({message: "File not found"});
+      return res.status(404).json({message: "Compliment not found"});
     }
 
     file.deleted = true;
 
     file.save(function(err, doomedFile) {
       res.json(doomedFile);
-    });
-
-  });
+    })
+  })
 });
 
-router.get('/compliment/:fileId', function(req, res, next) {
-  const {fileId} = req.params;
-  // same as 'const fileId = req.params.fileId'
-
-  const file = FILES.find(entry => entry.id === fileId);
-  if (!file) {
-    return res.status(404).end(`Could not find file '${fileId}'`);
-  }
-
-  res.json(file);
-});
 
 module.exports = router;

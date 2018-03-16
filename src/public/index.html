@@ -27,8 +27,8 @@
         </div>
      
 
-    <form class="form-group justify-content-center" id="file-compliment">
-        <textarea type="text" class="form-control row chirp" rows="4"></textarea>
+    <form class="form-group justify-content-center">
+        <input type="text" class="form-control row chirp" id="file-compliment" rows="4">
         <button type="button" class="btn btn-group row chirp" onclick="submitFileForm()">Chirp</button>
     </form>
 
@@ -37,12 +37,15 @@
       <ul class="list-group">
         {{#each files}}
         <li class="list-group-item">
-          <strong>{{_id}}</strong> - <strong>{{compliment}}</strong>
+          <strong>{{_id}} - {{compliment}}</strong>
           <span class="pull-right">
-            <button type="button" class="btn btn-group row" onclick="editFileClick('{{id}}')">+ cheep edit</button>
-            <input type="text" class="form-control"> 
-            <button type="button" class="btn btn-group row" onclick="deleteFileClick('{{id}}')">x cheep remove</button>
+            
+            <button type="button" class="btn btn-group row" onclick="editFileClick('{{_id}}')">+ cheep edit</button>
+       
+            <button type="button" class="btn btn-group row" onclick="deleteFileClick('{{_id}}')">x cheep remove</button>
+            
           </span>
+      
         </li>
         {{/each}}
       </ul>
@@ -53,10 +56,10 @@
 
     
     <!-- jQuery first, then Tether, then Bootstrap JS. -->
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="bootstrap-4.0.0-beta.3-dist/js/bootstrap.min.js"></script>
-    <script src="bootstrap-4.0.0-beta.3-dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/handlebars-v4.0.11.js"></script>
-    <script src="js/app.js"></script>
+    <script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script src="bootstrap-4.0.0-beta.3-dist/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="bootstrap-4.0.0-beta.3-dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+    <script src="js/handlebars-v4.0.11.js" type="text/javascript"></script>
+    <script src="js/app.js" type="text/javascript"></script>
   </body>
 </html>

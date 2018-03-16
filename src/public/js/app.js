@@ -1,5 +1,6 @@
 
 
+
 function getFiles() {
   return $.ajax('/api/compliment')
     .then(res => {
@@ -36,7 +37,7 @@ function toggleAddFileForm() {
 }
 
 function toggleAddFileFormVisibility() {
-  $('form-container').toggleClass('hidden');
+  $('.form-container').toggleClass('hidden');
 }
 
 function submitFileForm() {
@@ -68,7 +69,7 @@ function submitFileForm() {
     .done(function(response) {
       console.log("We have posted the data");
       refreshFileList();
-      toggleAddFileForm();
+
     })
     .fail(function(jqXHR, textStatus, errorThrown) {
       console.log("Failures at posting, we are", jqXHR, textStatus);
@@ -80,23 +81,41 @@ function submitFileForm() {
 
 function editFileClick(id) {
   const file = window.fileList.find(file => file._id === id);
+  
   if (file) {
+    console.log('file', file);
     setFormData(file);
     toggleAddFileFormVisibility();
+    console.log(id, file);
   }
-  console.log('UGGH!', method, status);
+  
+}
+
+
+function setFormData(data) {
+  console.log('Set form data', data)
+  data = data || {};
+
+  const file = {
+    compliment: data.compliment || '',
+    _id: data._id || '',
+  };
+  console.log(data);
+  $('#file-compliment').val(file.compliment);
+  $('#file-id').val(file._id);
+  
 }
 
 function deleteFileClick(id) {
   if (confirm("Are you sure?")) {
-    $.ajax({
+      $.ajax({
       type: 'DELETE',
       url: '/api/compliment/' + id,
       dataType: 'json',
       contentType : 'application/json',
     })
       .done(function(response) {
-        console.log("Compliment", id, "is DOOMED!!!!!!");
+        console.log("File", id, "is DOOMED!!!!!!");
         refreshFileList();
       })
       .fail(function(error) {
@@ -105,15 +124,7 @@ function deleteFileClick(id) {
   }
 }
 
-function setFormData(data) {
-  data = data || {};
 
-  const file = {
-    compliment: data.compliment || '',
-    _id: data._id || '',
-  };
 
-  $('#file-compliment').val(file.compliment);
-  $('#file-id').val(file._id);
-  
-}
+
+refreshFileList();
