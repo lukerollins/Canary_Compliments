@@ -24,27 +24,31 @@
         <div class="row justify-content-center">
         <img class="col-6" src="IMGS/canary_1.jpg">
         </div>
-        </div>
+    </div>
      
-
-    <form class="form-group justify-content-center">
-        <input type="text" class="form-control row chirp" id="file-compliment" rows="4">
-        <button type="button" class="btn btn-group row chirp" onclick="submitFileForm()">Chirp</button>
+    <div id="list-container"></div>
+    
+    <form id="add-file-form" class="form-group justify-content-center chirp">
+        <textarea class="form-control" id="file-compliment" rows="4"></textarea>
+        <button id="add-file-button" type="button" class="btn btn-group row" onclick="submitFileForm()">Chirp</button>
     </form>
 
-    <div id="list-container"></div>
-    <script id="list-template" class="form-container" type="text/x-handlebars-template">
+    
+    <script id="list-template" type="text/x-handlebars-template">
       <ul class="list-group">
         {{#each files}}
         <li class="list-group-item">
-          <strong>{{_id}} - {{compliment}}</strong>
-          <span class="pull-right">
+          {{_id}} - {{compliment}}
+          
             
-            <button type="button" class="btn btn-group row" onclick="editFileClick('{{_id}}')">+ cheep edit</button>
-       
-            <button type="button" class="btn btn-group row" onclick="deleteFileClick('{{_id}}')">x cheep remove</button>
+            <span class="pull-right">
+          
+                <input type="hidden" id="file-id" value="">
+            <button type="button" class="btn btn-group" onclick="editFileClick('{{_id}}')">+ cheep edit</button>
             
+            <button type="button" class="btn btn-group" onclick="deleteFileClick('{{_id}}')">x cheep remove</button>
           </span>
+          
       
         </li>
         {{/each}}

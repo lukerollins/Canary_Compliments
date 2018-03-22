@@ -21,7 +21,7 @@ function refreshFileList() {
   getFiles()
     .then(files => {
       
-      window.fileList = files;
+      window.top.fileList = files;
 
       const data = {files: files};
       const html = compiledTemplate(data);
@@ -80,20 +80,18 @@ function submitFileForm() {
 
 
 function editFileClick(id) {
-  const file = window.fileList.find(file => file._id === id);
+  const file = window.top.fileList.find(file => file._id === id);
   
   if (file) {
-    console.log('file', file);
     setFormData(file);
     toggleAddFileFormVisibility();
     console.log(id, file);
   }
-  
 }
 
 
 function setFormData(data) {
-  console.log('Set form data', data)
+  console.log('Set form data', data);
   data = data || {};
 
   const file = {
