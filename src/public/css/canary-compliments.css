@@ -1,6 +1,36 @@
 body {
     font-family: 'Special Elite', cursive;
-    background-color: rgb(255, 215, 55)
+    background-color: rgb(255, 215, 55);
+    font-size: 1.5em;
+}
+
+span.clearfix {
+    margin: 0;
+    float: right;
+}
+
+
+
+button.float-right {
+
+    margin: 5px;
+}
+
+
+.btn{
+    color: black;
+    background: none;
+    border: 4px black solid;
+}
+
+
+.list-group-item {
+    background: none;
+    border: black 3px solid;
+    border-left: black 11px solid;
+    border-right: black 9px solid;
+
+
 }
 
 header {
@@ -14,14 +44,23 @@ h1 {
 
 textarea {
     margin: 3%;
-    padding: 3%;
+    margin-right: 2%;
 }
 
 .chirp {
-    margin: 3%;
-    padding: 3%;
+    margin: 2%;
+    padding: 2%;
  }
 
  #gopher {
      text-decoration-style: none;
  }
+
+.btn:hover, .btn:focus, .btn:active {
+    background: none;
+    background-color: rgb(240, 185, 0);	
+}
+
+
+
+

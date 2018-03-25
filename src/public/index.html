@@ -30,7 +30,7 @@
     
     <form id="add-file-form" class="form-group justify-content-center chirp">
         <textarea class="form-control" id="file-compliment" rows="4"></textarea>
-        <button id="add-file-button" type="button" class="btn btn-group row" onclick="submitFileForm()">Chirp</button>
+        <button id="add-file-button" type="button" class="btn" onclick="submitFileForm()">Chirp</button>
     </form>
 
     
@@ -40,14 +40,13 @@
         <li class="list-group-item">
           {{_id}} - {{compliment}}
           
+          <span class="clearfix">   
+            <button type="button" class="btn float-right" onclick="editFileClick('{{_id}}')">+ cheep edit</button>
             
-            <span class="pull-right">
-          
-                <input type="hidden" id="file-id" value="">
-            <button type="button" class="btn btn-group" onclick="editFileClick('{{_id}}')">+ cheep edit</button>
-            
-            <button type="button" class="btn btn-group" onclick="deleteFileClick('{{_id}}')">x cheep remove</button>
+            <button type="button" class="btn float-right" onclick="deleteFileClick('{{_id}}')">x cheep remove</button>
           </span>
+            
+          
           
       
         </li>
