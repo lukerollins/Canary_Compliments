@@ -61,6 +61,10 @@ textarea {
     background-color: rgb(240, 185, 0);	
 }
 
+img { 
+ max-width: 50%;
+}
+
 
 
 
