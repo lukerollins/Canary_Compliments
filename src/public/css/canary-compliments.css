@@ -21,6 +21,7 @@ button.float-right {
     color: black;
     background: none;
     border: 4px black solid;
+    border-radius: 0;
 }
 
 
@@ -29,22 +30,28 @@ button.float-right {
     border: black 3px solid;
     border-left: black 11px solid;
     border-right: black 9px solid;
+    font-size: 70%;
 
 
 }
 
 header {
-    margin: 3%;
-    padding: 3%;
+    margin-top: 3%;
+    padding-top: 3%;
 }
 
-h1 {
-    font-size: 3em;
-}
+
+    h1 {
+        text-align: center;
+        font-size: 150%;
+        
+    }
 
 textarea {
-    margin: 3%;
+
     margin-right: 2%;
+    margin: 3%;
+    
 }
 
 .chirp {
@@ -61,10 +68,45 @@ textarea {
     background-color: rgb(240, 185, 0);	
 }
 
-img { 
- max-width: 50%;
+.btn:active {
+    color: white;
+}
+
+img {
+    max-height: 100vh;
 }
 
 
+form {
+    padding-right: 30%;
+}
+
+@media (min-width: 418px) {
+    h1 {
+        font-size: 2.5em;
+    }
+   
+}
+
+@media (min-width: 800px) {
+
+    h1 {
+        font-size: 3em;
+    }
+   
+
+    
+}
+
+@media (max-width: 800px) {
+    .list-group-item {
+        text-align: center;
+        
+    }
+
+    span {
+        align-content: center;
+    }
+}
 
 
