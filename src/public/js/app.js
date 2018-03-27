@@ -1,6 +1,8 @@
 
 //All the functions that'll run the app
 
+//Gets the files, if there are any
+
 function getFiles() {
   return $.ajax('/api/compliment')
     .then(res => {
@@ -13,7 +15,7 @@ function getFiles() {
     });
 }
 
-
+//Updates the list of files after posting or editing
 function refreshFileList() {
   const template = $('#list-template').html(); 
   const compiledTemplate = Handlebars.compile(template);
@@ -29,6 +31,7 @@ function refreshFileList() {
     });
 }
 
+//Sets up the <textarea> to receive what you type so it can be submitted
 
 function toggleAddFileForm() {
   console.log("Baby steps...");
@@ -36,10 +39,13 @@ function toggleAddFileForm() {
   toggleAddFileFormVisibility();
 }
 
+
+//Keeps file from being considered another instance of posting
 function toggleAddFileFormVisibility() {
   $('.form-container').toggleClass('hidden');
 }
 
+//Send text to database
 function submitFileForm() {
   console.log("You clicked 'submit'. Congratulations.");
 
@@ -78,7 +84,7 @@ function submitFileForm() {
   console.log("Your file data", JSON.stringify(fileData));
 }
 
-
+//Allows you to change a file in the database 
 function editFileClick(id) {
   const file = window.top.fileList.find(file => file._id === id);
   
@@ -89,7 +95,7 @@ function editFileClick(id) {
   }
 }
 
-
+//Sets up the way the file will be sent from the form to the database after for storage submitting or editting
 function setFormData(data) {
   console.log('Set form data', data);
   data = data || {};
@@ -103,6 +109,9 @@ function setFormData(data) {
   $('#file-id').val(file._id);
   
 }
+
+/**** Removes a file, from public viewing while allowing it to have a presence in the database should it needed
+ at some other time for whatever reason; like it was mistakenly removed. ***/
 
 function deleteFileClick(id) {
   if (confirm("Are you sure?")) {
