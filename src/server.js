@@ -26,3 +26,4 @@ app.listen(config.port, function() {
     console.log(`${config.appName} is listening on port ${config.port}`);
 });
 
+//Sets up everything the app will need and where to find it.

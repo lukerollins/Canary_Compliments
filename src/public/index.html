@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="bootstrap-4.0.0-beta.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="bootstrap-4.0.0-beta.3-dist/css/bootstrap-grid.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Special+Elite">
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="css/canary-compliments.css">
   </head>
   <body>
@@ -41,6 +42,8 @@
           {{_id}} - {{compliment}}
           
           <span class="clearfix">   
+
+            <input type="hidden" id="file-id" value="">
             <button type="button" class="btn float-right" onclick="editFileClick('{{_id}}')">+ cheep edit</button>
             
             <button type="button" class="btn float-right" onclick="deleteFileClick('{{_id}}')">x cheep remove</button>
@@ -55,10 +58,10 @@
 </script>
 
 
-    <a target="_blank" href="https://gophergripes.squarespace.com/" id="gopher"><footer class="row justify-content-center">*Ispired by Gopher Gripes</footer></a>
+    <a target="_blank" href="https://gophergripes.squarespace.com/" id="gopher"><footer class="row justify-content-center">*Inspired by Gopher Gripes</footer></a>
 
     
-    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <!-- jQuery first, then Bootstrap JS, then the actual application javascript (app.js) -->
     <script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
     <script src="bootstrap-4.0.0-beta.3-dist/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="bootstrap-4.0.0-beta.3-dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>

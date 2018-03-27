@@ -1,5 +1,5 @@
 
-
+//All the functions that'll run the app
 
 function getFiles() {
   return $.ajax('/api/compliment')

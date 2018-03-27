@@ -6,3 +6,5 @@ module.exports = {
       dbName: 'canarys_compliments'
     }
   };
+
+  //Basic set up of the app

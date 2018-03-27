@@ -27,3 +27,5 @@ File.count({}, function(err, count) {
 });
 
 module.exports = File;
+
+//How the files in the database will be structured

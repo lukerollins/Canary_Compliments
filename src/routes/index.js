@@ -3,7 +3,7 @@ const router = require('express').Router();
 const mongoose = require('mongoose');
 
 
-
+//Get all the files, if any
 router.get('/compliment', function(req, res, next) {
   const fileModel = mongoose.model('File');
 
@@ -16,10 +16,10 @@ router.get('/compliment', function(req, res, next) {
     res.json(files);
   });
 });
-
+//Get a specific file
 router.get('/compliment/:fileId', function(req, res, next) {
   const {fileId} = req.params;
-  // same as 'const fileId = req.params.fileId'
+ 
 
   const file = FILES.find(entry => entry.id === fileId);
   if (!file) {
@@ -29,7 +29,7 @@ router.get('/compliment/:fileId', function(req, res, next) {
   res.json(file);
 });
 
-
+//Post a new file
 router.post('/compliment', function(req, res, next) {
   const File = mongoose.model('File');
   const fileData = {
@@ -46,9 +46,8 @@ router.post('/compliment', function(req, res, next) {
   });
 });
 
-/**
- * Update an existing file
- */
+//Update an existing file
+ 
 router.put('/compliment/:fileId', function(req, res, next) {
   const File = mongoose.model('File');
   const fileId = req.params.fileId;
@@ -76,9 +75,8 @@ router.put('/compliment/:fileId', function(req, res, next) {
 
 });
 
-/**
- * Delete a file
- */
+//Delete a file
+
 router.delete('/compliment/:fileId', function(req, res, next){
   const File = mongoose.model('File');
   const fileId = req.params.fileId;
